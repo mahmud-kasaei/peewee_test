@@ -1,5 +1,5 @@
 import peewee
-rest_db = peewee.MySQLDatabase('my_database', host="localhost", user="root", port=3306, passwd="")
+rest_db = peewee.MySQLDatabase('restaurant_db', host="localhost", user="root", port=3306, passwd="")
 
 class MyRestModel(peewee.Model):
 
@@ -13,7 +13,29 @@ class Resturant(MyRestModel):
 
 class Employe(MyRestModel):
     id=peewee.PrimaryKeyField()
-    name=peewee.TextField()
-    resturant=peewee.ForeignKeyField(related_name="employes", on_delete="RESTRICT", on_update="CASCADE")
+    f_name=peewee.TextField()
+    l_name=peewee.TextField()
+    job=peewee.ForeignKeyField(Job)
+    resturant=peewee.ForeignKeyField(Resturant,related_name="employes", on_delete="RESTRICT", on_update="CASCADE")
 
-class pr
+class Peripherals(MyRestModel):
+    id=peewee.PrimaryKeyField()
+    name=peewee.CharField()
+    count=peewee.IntegerField()
+    restaurant=peewee.ForeignKeyField(Resturant,related_name="peripherals", on_delete="RESTRICT", on_update="CASCADE")
+
+class Room(MyRestModel):
+    id=peewee.PrimaryKeyField()
+    name=peewee.TextField()
+    peripherals=peewee.ForeignKeyField(Peripherals)
+    restaurant=peewee.ForeignKeyField(Resturant)
+    emoloye=peewee.ForeignKeyField(Employe)
+
+class Job(MyRestModel):
+    id=peewee.PrimaryKeyField()
+    name=peewee.TextField()
+
+class Category_Job(MyRestModel):
+    id=peewee.PrimaryKeyField()
+    name=peewee.TextField()
+    job=peewee.ForeignKeyField(Job)
