@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head><title>Poem Maker Pro</title>
+<link href='{{ static_url("css/bootstrap.css") }}' rel="stylesheet">
+<link href='{{ static_url("css/bootstrap-theme.css") }}' rel="stylesheet">
+    <link href='{{ static_url("css/basic.css") }}' rel="stylesheet">
+
+</head>
+<body style="direction:rtl">
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 ">
+        <a class="btn btn-lg btn-success Mitra pull-left" href="/restaurant/add">رستوران جدید</a>
+        <br/>      <br/>      <br/>
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    id
+                </td>
+                <td>
+                    name
+                </td>
+                <td>
+                    address
+                </td>
+                <td>
+                    تعداد کارمندان رستوران
+                </td>
+                <td>اسامی کارکنان رستوران</td>
+            </tr>
+       {% for rest  in rests %}
+        <tr class="Mitra">
+        <td>{{rest.id}} </td>
+
+        <td>{{rest.name}}</td>
+            <td>{{rest.address}}</td>
+            <td>{{rest.restaurants.count()}}</td>
+            <td>
+                {% for e in rest.restaurants %}
+                {{e.f_name}}
+                {% end %}
+            </td>
+        </tr>
+            {% end %}
+
+        </table>
+    </div>
+</div>
+
+<script src="{{static_url('js/jquery.js')}}"></script>
+<script src="{{static_url('js/bootstrap.js')}}"></script>
+
+</body>
+</html>

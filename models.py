@@ -19,8 +19,8 @@ class Employe(MyRestModel):
     id=peewee.PrimaryKeyField()
     f_name=peewee.TextField()
     l_name=peewee.TextField()
-    job=peewee.ForeignKeyField(Job, related_name="employes", on_delete="RESTRICT", on_update="CASCADE")
-    resturant=peewee.ForeignKeyField(Resturant,related_name="employes", on_delete="RESTRICT", on_update="CASCADE")
+    job=peewee.ForeignKeyField(Job, related_name="jobs", on_delete="RESTRICT", on_update="CASCADE")
+    resturant=peewee.ForeignKeyField(Resturant,related_name="restaurants", on_delete="RESTRICT", on_update="CASCADE")
 
 class Peripherals(MyRestModel):
     id=peewee.PrimaryKeyField()
