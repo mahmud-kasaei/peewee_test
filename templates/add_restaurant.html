@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><title>Poem Maker Pro</title>
+<link href='{{ static_url("css/bootstrap.css") }}' rel="stylesheet">
+<link href='{{ static_url("css/bootstrap-theme.css") }}' rel="stylesheet">
+    <link href='{{ static_url("css/basic.css") }}' rel="stylesheet">
+
+</head>
+<body style="direction:rtl">
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 ">
+          <form method="post" action="/restaurant/create">
+
+          <div class="form-group">
+            <input type="text" name="name" value="" placeholder="نام رستوران..." class="form-control" />
+              <input type="text" name="address" value="" placeholder="آدرس رستوران..." class="form-control" />
+          </div>
+
+        <input type="submit" class="btn btn-primary Yekan" value="ذخیره" >
+          </form>
+    </div>
+</div>
+
+<!-- Modal -->
+
+<script src="{{static_url('js/jquery.js')}}"></script>
+<script src="{{static_url('js/bootstrap.js')}}"></script>
+
+</body>
+</html>

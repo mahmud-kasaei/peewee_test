@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head><title>job_category_create....</title>
+<link href='{{ static_url("css/bootstrap.css") }}' rel="stylesheet">
+<link href='{{ static_url("css/bootstrap-theme.css") }}' rel="stylesheet">
+    <link href='{{ static_url("css/basic.css") }}' rel="stylesheet">
+
+</head>
+<body style="direction:rtl">
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 ">
+          <form method="post" action="/employe/create">
+
+          <div class="form-group">
+            <input type="text" name="f_name" value="" placeholder="نام..." class="form-control" />
+              <input type="text" name="l_name" value="" placeholder="نام خانوادگی ..." class="form-control" />
+
+              {% for re in res %}
+              <label class="checkbox-inline">
+                    <input name="restaurant" type="checkbox" value={{re.id}}> {{re.name}}
+              </label>
+              {% end %}
+              <br/>
+
+              <!--<select name="restaurant">-->
+                  <!--{% for re in res %}-->
+                  <!--<option value="{{re.id}}">-->
+                      <!--{{re.name}}-->
+                  <!--</option>-->
+                  <!--{% end %}-->
+              <!--</select>-->
+
+              <select name="category_job">
+                  {% for cj in cjs %}
+                  <option value="{{cj.id}}">
+                      {{cj.name}}
+                  </option>
+                  {% end %}
+              </select>
+
+              <select name="job">
+                  {% for j in js %}
+                  <option value="{{j.id}}">
+                      {{j.name}}
+                  </option>
+                  {% end %}
+              </select>
+          </div>
+
+        <input type="submit" class="btn btn-primary Yekan" value="ذخیره" >
+          </form>
+    </div>
+</div>
+
+<!-- Modal -->
+
+<script src="{{static_url('js/jquery.js')}}"></script>
+<script src="{{static_url('js/bootstrap.js')}}"></script>
+
+</body>
+</html>

@@ -11,36 +11,43 @@
 <div class="row">&nbsp;</div>
 <div class="row">
     <div class="col-md-8 col-md-offset-2 ">
-        <a class="btn btn-lg btn-success Mitra pull-left" href="/restaurant/add">رستوران جدید</a>
+        <a class="btn btn-lg btn-success Mitra pull-left" href="/restaurant/create">رستوران جدید</a>
+        <a class="btn btn-lg btn-success Mitra pull-left" href="/category/create">اضافه کردن گروه کار جدید</a>
+        <a class="btn btn-lg btn-success Mitra pull-left" href="/job/create">اضافه کردن کار جدید</a>
+        <a class="btn btn-lg btn-success Mitra pull-left" href="/employe/create">اضافه کردن کارمند جدید ...</a>
         <br/>      <br/>      <br/>
         <table class="table table-striped">
             <tr>
-                <td>
-                    id
-                </td>
+
                 <td>
                     name
                 </td>
                 <td>
                     address
                 </td>
-                <td>
-                    تعداد کارمندان رستوران
-                </td>
+                <!--<td>-->
+                    <!--تعداد کارمندان رستوران-->
+                <!--</td>-->
                 <td>اسامی کارکنان رستوران</td>
             </tr>
-       {% for rest  in rests %}
-        <tr class="Mitra">
-        <td>{{rest.id}} </td>
-
-        <td>{{rest.name}}</td>
-            <td>{{rest.address}}</td>
-            <td>{{rest.restaurants.count()}}</td>
+            {% set last = None %}
+            {% for rest  in rests %}
+            <tr class="Mitra">
+            {% set re = rest.restaurant %}
+            {% if re != last %}
+                {% set last=re %}
             <td>
-                {% for e in rest.restaurants %}
-                {{e.f_name}}
-                {% end %}
+                {{re.name}}
             </td>
+            <td>
+                {{re.address}}
+
+            </td>
+            {% end %}
+                <td>
+                    {{rest.employe.f_name}}
+                </td>
+
         </tr>
             {% end %}
 
